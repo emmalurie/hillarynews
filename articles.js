@@ -11,7 +11,6 @@
         if (error) {
             console.log(error);
         } else {
-            var response_
             fs.writeFile(outputJSONFile, JSON.stringify(response,null,2), function(err)   {
             if (err) {
                 console.log('WriteFile Error:', err);
