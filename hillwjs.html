@@ -15,26 +15,15 @@
 		<p class ="lead"  id = "header"> Keep up with all the latest news </p>
 	</div>
 	<p id = "articles"> </p> 
+        
+        <script src="getArticles.js"></script>
 		<script> 
-			var AlchemyNewsAPI = require('alchemy-news-api');
-    		var alchemyNewsAPI = new AlchemyNewsAPI('edb630c19edc8c2f618e18f5d4f88895e4704312'); 
-
-    		var keywordQuery = {
-        		'keyword_text': 'Clinton',
-        		'return': ['url', 'title']
-   						 };
-    		alchemyNewsAPI.getNewsByKeyword(keywordQuery, function (error, response) {
-        	if (error) {
-            	console.log(error);
-        	} else {
-        		var out = "";
-    			var i;
-        	    for (i = 0; i <response.result.docs.length; i++){
-        	    	out += '<a href="' + response.result.docs[i].source.enriched.url.url + '">' + response.result.docs[i].source.enriched.url.title + '</a><br>';
-            }
+            var out = "";
+    		var i;
+        	for (i = 0; i <api_response.result.docs.length; i++){
+        	     out += '<a href="' + response.result.docs[i].source.enriched.url.url + '">' + response.result.docs[i].source.enriched.url.title + '</a><br>';
+             }
             document.getElementById("articles").innerHTML = out;
-        }
-    });
 
 		</script>
 

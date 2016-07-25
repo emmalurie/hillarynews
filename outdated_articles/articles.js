@@ -31,7 +31,7 @@
             mini_dict['title'] = response_js_docs[i].source.enriched.url.title;
             result_list.push(mini_dict)
         }
-         console.log(result_list)
+    //     console.log(result_list)
     //     fs.writeFile(arrayOutputFile, result_list, function(err)   {
     //         if (err) {
     //             console.log('WriteFile Error:', err);
