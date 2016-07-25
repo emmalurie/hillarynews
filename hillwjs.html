@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang = "en">
+	<head>
+		<meta charset= "utf-8">
+		<meta name = "viewport" content = "width=device-width, initial-scale=1"> 
+ 	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+
+<title>Hillary News!!!</title>
+</head>
+<body>
+  	<div class="jumbotron">		
+		<h1 class= "display-3" id= "header">News about Hillary</h1>
+		<p class ="lead"  id = "header"> Keep up with all the latest news </p>
+	</div>
+	<p id = "articles"> </p> 
+		<script> 
+			var AlchemyNewsAPI = require('alchemy-news-api');
+    		var alchemyNewsAPI = new AlchemyNewsAPI('edb630c19edc8c2f618e18f5d4f88895e4704312'); 
+
+    		var keywordQuery = {
+        		'keyword_text': 'Clinton',
+        		'return': ['url', 'title']
+   						 };
+    		alchemyNewsAPI.getNewsByKeyword(keywordQuery, function (error, response) {
+        	if (error) {
+            	console.log(error);
+        	} else {
+        		var out = "";
+    			var i;
+        	    for (i = 0; i <response.result.docs.length; i++){
+        	    	out += '<a href="' + response.result.docs[i].source.enriched.url.url + '">' + response.result.docs[i].source.enriched.url.title + '</a><br>';
+            }
+            document.getElementById("articles").innerHTML = out;
+        }
+    });
+
+		</script>
+
+</body>
+</html>
