@@ -26,9 +26,17 @@ function parseData(data) {
 function createText(articleList){
  var out = '<table class="table table-striped">'; //create striped table 
  var i; 
+ var title;
     for(i = 0; i < articleList.length; i++) {
+        title = articleList[i].source.enriched.url.title;
+        if (title.includes("|")){
+            title = title.substring(0, title.indexOf("|"));
+        }
+        if (title.includes("•")){
+            title = title.substring(0, title.indexOf("•"));
+        }
         out += '<tr><td><a href="' + articleList[i].source.enriched.url.url + '">' + 
-        articleList[i].source.enriched.url.title + '</a></td></tr>';
+        title + '</a></td></tr>';
     }
     out += '</table>'//end table
     return out; 
